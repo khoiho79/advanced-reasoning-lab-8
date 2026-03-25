@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useEffect, useMemo, useState } from 'react';
+import { FiEye, FiUsers, FiGrid, FiBriefcase } from 'react-icons/fi';
 
 const focusAreas = [
   {
@@ -20,10 +21,22 @@ const focusAreas = [
 ];
 
 const principles = [
-  'Reasoning should be legible, not opaque.',
-  'Systems should support human judgment in consequential decisions.',
-  'Complexity should be organized into usable structure.',
-  'Useful AI must be grounded in real-world workflows.',
+  {
+    text: 'Reasoning should be legible, not opaque.',
+    Icon: FiEye,
+  },
+  {
+    text: 'Systems should support human judgment in consequential decisions.',
+    Icon: FiUsers,
+  },
+  {
+    text: 'Complexity should be organized into usable structure.',
+    Icon: FiGrid,
+  },
+  {
+    text: 'Useful AI must be grounded in real-world workflows.',
+    Icon: FiBriefcase,
+  },
 ];
 
 const scenarios = [
@@ -241,10 +254,12 @@ export default function Home() {
               <h2>What guides our work.</h2>
             </div>
             <div className="principles-list">
-              {principles.map((principle) => (
-                <div className="principle-item" key={principle}>
-                  <span className="principle-dot" />
-                  <p>{principle}</p>
+              {principles.map(({ text, Icon }) => (
+                <div className="principle-item" key={text}>
+                  <span className="principle-icon" aria-hidden="true">
+                    <Icon />
+                  </span>
+                  <p>{text}</p>
                 </div>
               ))}
             </div>
